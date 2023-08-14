@@ -1,11 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <h1>Dom Manipulation</h1>
+    <h2 id="text-to-change">Change the text with buttons</h2>
+    <h3 id="text-from-input">Text from input field</h3>
+    <input type="text" name="" id="input-texts" />
+    <button id="btn-update">Update</button>
+    <br />
+    <br />
+    <button onclick="textHandler()">Handle with onclick function</button>
+    <button id="event-handler">Handle with addEventListener</button>
+    <br>
+    <div id="review-div">
+      <h2>User review </h2>
+      <br>
+      <textarea name="" id="review" cols="30" rows="10"></textarea>
+      <br>
+      <button type="submit" id="review-submit">Submit</button>
+    </div>
+
+    <script>
+      // onclick function
+      function textHandler() {
+        const handler = document.getElementById("text-to-change");
+        handler.innerText = "Changed with onclick function";
+      }
+      // with addEventListener
+      document
+        .getElementById("event-handler")
+        .addEventListener("click", function () {
+          const changedText = document.getElementById("text-to-change");
+          changedText.innerText = "Handled with addEventListener";
+        });
+
+      // input text
+      document.getElementById('btn-update').addEventListener('click', function(){
+        const inputTexts= document.getElementById('input-texts')
+        const textFromInput = document.getElementById('text-from-input')
+        textFromInput.innerText= inputTexts.value
+        inputTexts.value= ''
+      })
+
+      //review submit
+      document.getElementById('review-submit').addEventListener('click', function(){
+        const writtenReview = document.getElementById('review')
+        const reviewPara= document.createElement('p')
+        reviewPara.innerText=writtenReview.value
+        const reviewDiv= document.getElementById('review-div')
+        reviewDiv.appendChild(reviewPara)
+        writtenReview.value=''
+      })
+
+
+
+    </script>
+  </body>
 </html>
