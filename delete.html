@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>write 'delete' to delete your repository.</h2>
+    <h3 id="delete-repo">Delete this repository</h3>
+    <input type="text" name="" id="text-field" placeholder="Type delete">
+    <button type="submit" id="btn-delete" disabled>Delete</button>
+
+    <script>
+        document.getElementById('text-field').addEventListener('keyup', function(event){
+            const values= event.target.value
+            const deleteButton= document.getElementById('btn-delete')
+            if(values==='delete'){
+                deleteButton.removeAttribute('disabled')
+                
+            }
+            else{
+                deleteButton.setAttribute('disabled', true)
+            }
+            
+        })
+
+
+        document.getElementById('btn-delete').addEventListener('click', function(){
+            const deleteRepo= document.getElementById('delete-repo')
+            deleteRepo.style.display='none'
+            const textField=document.getElementById('text-field')
+            textField.value=""
+            const deleteConfirm= document.createElement('h4')
+            deleteConfirm.innerText='Your repo has been deleted'
+            document.body.appendChild(deleteConfirm)
+
+
+        })
+    </script>
+    
+</body>
+</html>
